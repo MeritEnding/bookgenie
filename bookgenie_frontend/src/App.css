@@ -133,6 +133,7 @@
   background-color: #2c9a91;
 }
 
+/* Universal Styles & Base Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -141,22 +142,260 @@
 
 html, body, #root {
   width: 100vw;
-  height: 100vh;
-  font-family: 'Arial', sans-serif;
+  min-height: 100vh; /* Changed to min-height for content flexibility */
+  font-family: 'Pretendard', sans-serif;
   background-color: #f0f8f9;
+  color: #333; /* Slightly darker text for better readability */
 }
 
+/* App Container */
+.App {
+  font-family: 'Pretendard', sans-serif;
+  text-align: left;
+  padding: 20px;
+  max-width: 1200px; /* Added max-width to constrain content */
+  margin: 0 auto; /* Centered the app container */
+}
+
+/* --- Book Card Styling --- */
+.book-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fff; /* Added background for clarity */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transitions for hover */
+  cursor: pointer;
+}
+
+.book-card:hover {
+  transform: translateY(-3px); /* Lift effect on hover */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
+}
+
+.cover-box {
+  border: 5px solid #38b2ac;
+  border-radius: 20px;
+  width: 100px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 20px;
+  overflow: hidden; /* Ensure content stays within bounds */
+}
+
+.cover-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures images fill the box nicely */
+    border-radius: 15px; /* Apply border-radius to the image as well */
+}
+
+
+.book-info {
+  flex-grow: 1;
+}
+
+.book-info h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #222; /* Slightly darker for headings */
+}
+
+.book-info p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.star-rating {
+  font-size: 18px;
+  color: black;
+}
+
+/* --- Action Buttons --- */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.action-buttons button {
+  background-color: #38b2ac;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Button shadow */
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; /* All transitions */
+}
+
+.action-buttons button:hover {
+  background-color: #2c9a91;
+  transform: translateY(-1px); /* Slight lift on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* --- Register Area --- */
+.register-area {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px; /* Added padding to separate from cards */
+  border-top: 1px solid #eee; /* Light border as a separator */
+}
+
+.register-area input {
+  padding: 10px;
+  font-size: 16px;
+  width: 200px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none; /* Remove default outline */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Transitions for focus */
+}
+
+.register-area input:focus {
+  border-color: #38b2ac; /* Highlight border on focus */
+  box-shadow: 0 0 0 3px rgba(56, 178, 172, 0.2); /* Glow effect on focus */
+}
+
+.register-area button {
+  background-color: #38b2ac;
+  color: white;
+  font-size: 18px;
+  padding: 12px 24px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Button shadow */
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; /* All transitions */
+}
+
+.register-area button:hover {
+  background-color: #2c9a91;
+  transform: translateY(-1px); /* Slight lift on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* --- Modal Styling --- */
+/* Your existing modal styles are good, just adding a subtle shadow and animation */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex; alignItems: center; justify-content: center;
+  z-index: 1000; /* Ensure modal is on top */
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* More prominent shadow for modal */
+  animation: fadeIn 0.3s ease-out; /* Fade-in animation */
+}
+
+.modal-content p {
+  font-size: 18px;
+  margin-bottom: 1.5rem; /* Space below text */
+  color: #444;
+}
+
+.modal-content button {
+  padding: 10px 20px;
+  border-radius: 6px; /* Slightly less rounded than main buttons */
+  font-size: 16px;
+  cursor: pointer;
+  margin: 0 8px; /* Spacing between modal buttons */
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.modal-content button:first-of-type { /* Confirm button */
+  background-color: #dc3545; /* Red for delete confirmation */
+  color: white;
+  border: none;
+}
+
+.modal-content button:first-of-type:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+}
+
+.modal-content button:last-of-type { /* Cancel button */
+  background-color: #6c757d; /* Grey for cancel */
+  color: white;
+  border: none;
+}
+
+.modal-content button:last-of-type:hover {
+  background-color: #5a6268;
+  transform: translateY(-1px);
+}
+
+/* --- App-Level Styles (from original, mostly unused in modern React apps) --- */
+/* Kept for completeness, but typically these are not used with the structure above */
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Detail/Register Page Specific Styles --- */
+/* These styles are intended for your other components like Detail or Register */
 .app-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 100vh; /* Changed to min-height */
   padding: 20px;
   gap: 20px;
+  max-width: 1000px; /* Constrain width */
+  margin: 0 auto; /* Center */
+  background-color: #f0f8f9; /* Consistent background */
 }
 
 .header {
   display: flex;
   align-items: center;
+  margin-bottom: 20px; /* Add some space below the header */
 }
 
 .header span {
@@ -171,10 +410,18 @@ html, body, #root {
   border: 1px solid #ccc;
   border-left: none;
   padding: 12px 20px;
-  width: 300px;
+  flex-grow: 1; /* Allow input to grow */
+  max-width: 300px; /* Limit input width */
   border-radius: 0 10px 10px 0;
   background-color: white;
   font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.header input:focus {
+  border-color: #20c997;
+  box-shadow: 0 0 0 3px rgba(32, 201, 151, 0.2);
 }
 
 .card {
@@ -188,6 +435,7 @@ html, body, #root {
   align-items: center;
   justify-content: center;
   max-height: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Card shadow */
 }
 
 .book-image {
@@ -195,9 +443,10 @@ html, body, #root {
   width: auto;
   border: 3px solid #20c997;
   border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Image shadow */
 }
 
-.book-info {
+.book-info { /* Overrides the previous .book-info for detail page */
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -210,6 +459,13 @@ html, body, #root {
   padding: 15px;
   font-size: 18px;
   font-weight: bold;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.book-info input:focus {
+  border-color: #20c997;
+  box-shadow: 0 0 0 3px rgba(32, 201, 151, 0.2);
 }
 
 .book-description {
@@ -219,6 +475,7 @@ html, body, #root {
   font-size: 16px;
   line-height: 1.6;
   background-color: #fefefe;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05); /* Inner shadow for description */
 }
 
 .rating {
@@ -241,9 +498,115 @@ html, body, #root {
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); /* Button shadow */
+  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
 }
 
 .confirm-btn:hover {
   background-color: #17a689;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25); /* Enhanced shadow on hover */
+}
+
+/* Keyframe for modal fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* --- Modal Styles --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.65); /* Slightly darker overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Ensure it's on top of everything */
+  backdrop-filter: blur(3px); /* Subtle blur for background content */
+  animation: fadeInOverlay 0.2s ease-out; /* Smooth fade-in for overlay */
+}
+
+.modal-content {
+  background-color: #ffffff;
+  padding: 35px 45px; /* More generous padding */
+  border-radius: 12px; /* Smoother rounded corners */
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* More prominent shadow for depth */
+  max-width: 420px; /* Limit modal width for better aesthetics */
+  width: 90%; /* Ensure responsiveness on smaller screens */
+  transform: translateY(-20px); /* Initial subtle lift for animation */
+  opacity: 0; /* Start invisible for animation */
+  animation: slideInAndFade 0.3s cubic-bezier(0.25, 0.8, 0.25, 1.2) forwards; /* Custom animation */
+}
+
+.modal-content p {
+  font-size: 20px; /* Larger, more impactful question */
+  font-weight: 500; /* Medium weight */
+  color: #343a40; /* Darker text for readability */
+  margin-bottom: 30px; /* More space before buttons */
+  line-height: 1.4;
+}
+
+.modal-content button {
+  padding: 12px 25px; /* Larger buttons */
+  border-radius: 8px; /* Consistent rounded corners */
+  font-size: 16px; /* Consistent font size */
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  font-weight: 600; /* Bolder button text */
+  margin: 0 10px; /* Space between buttons */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Subtle button shadow */
+}
+
+/* Confirm (Delete) Button Style */
+.modal-content button:first-of-type { /* '확인' button (delete) */
+  background-color: #dc3545; /* Red for destructive action */
+  color: white;
+  border: none;
+}
+
+.modal-content button:first-of-type:hover {
+  background-color: #c82333; /* Darker red on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Cancel Button Style */
+.modal-content button:last-of-type { /* '취소' button */
+  background-color: #6c757d; /* Neutral grey for cancel */
+  color: white;
+  border: none;
+}
+
+.modal-content button:last-of-type:hover {
+  background-color: #5a6268; /* Darker grey on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Animations --- */
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
