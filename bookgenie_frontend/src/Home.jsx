@@ -25,6 +25,52 @@ const Home = () => {
     }
   };
 
+  // Function to generate image for a book
+  const generateBookImage = async (bookTitle, bookId) => {
+    try {
+      const prompt = `Cover art for a book titled "${bookTitle}" in a unique and captivating style.`;
+      const res = await fetch("https://api.openai.com/v1/images/generations", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
+        },
+        body: JSON.stringify({
+          prompt: prompt,
+          n: 1,
+          size: "512x512",
+        }),
+      });
+
+      if (!res.ok) {
+        const errorText = await res.text();
+        console.error("API 호출 실패:", errorText);
+        // Optionally, alert the user or show a fallback message
+        return null;
+      }
+
+      const data = await res.json();
+      console.log("API 응답:", data);
+
+      if (data?.data?.length > 0) {
+        const imageUrl = data.data[0].url;
+        // Update the specific book's imageUrl in the state
+        setBooks((prevBooks) =>
+          prevBooks.map((book) =>
+            book.id === bookId ? { ...book, imageUrl: imageUrl } : book
+          )
+        );
+        return imageUrl;
+      } else {
+        console.warn("이미지를 가져오지 못했습니다.");
+        return null;
+      }
+    } catch (error) {
+      console.error("이미지 생성 중 오류 발생:", error);
+      return null;
+    }
+  };
+
   useEffect(() => {
     fetchBooks();
   }, []);
@@ -50,10 +96,36 @@ const Home = () => {
           style={{ cursor: "pointer" }}
         >
           <div className="cover-box">
-            {/* 임시 이미지 박스 */}
-            <div style={{ width: "100px", height: "140px", background: "#eee", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <span>이미지 없음</span>
-            </div>
+            {item.imageUrl ? (
+              <img
+                src={item.imageUrl}
+                alt={`${item.title} 책 표지`}
+                style={{ width: "100px", height: "140px", objectFit: "cover" }}
+              />
+            ) : (
+              <div
+                style={{
+                  width: "100px",
+                  height: "140px",
+                  background: "#eee",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexDirection: "column", // To stack text and button
+                }}
+              >
+                
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevent card click
+                    generateBookImage(item.title, item.id);
+                  }}
+                  style={{ marginTop: "10px", padding: "5px 10px", fontSize: "0.8em" }}
+                >
+                  이미지 생성
+                </button>
+              </div>
+            )}
           </div>
           <div className="book-info">
             <h3>{item.title}</h3>
@@ -90,28 +162,10 @@ const Home = () => {
       </div>
 
       {modal && (
-        <div
-          className="modal-overlay" // Add this class
-        // REMOVE THIS INLINE STYLE:
-        // style={{
-        //   position: "fixed",
-        //   top: 0, left: 0, right: 0, bottom: 0,
-        //   backgroundColor: "rgba(0, 0, 0, 0.5)",
-        //   display: "flex", alignItems: "center", justifyContent: "center",
-        // }}
-        >
-          <div
-            className="modal-content" // Add this class
-          // REMOVE THIS INLINE STYLE:
-          // style={{
-          //   backgroundColor: "white",
-          //   padding: "2rem",
-          //   borderRadius: "8px",
-          //   textAlign: "center",
-          // }}
-          >
+        <div className="modal-overlay">
+          <div className="modal-content">
             <p>정말 삭제하시겠습니까?</p>
-            <button onClick={handleDelete} /* REMOVE THIS INLINE STYLE: style={{ marginRight: "1rem" }}*/>확인</button>
+            <button onClick={handleDelete}>확인</button>
             <button onClick={() => openModal(false)}>취소</button>
           </div>
         </div>
