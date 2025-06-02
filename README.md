@@ -68,7 +68,7 @@ RESTful API 기반의 견고한 백엔드와 직관적인 프론트엔드 UI를 
 ## 📂 기술 스택 및 환경
 
 - 프론트엔드: React, axios  
-- 백엔드: json-server (mock API) → 추후 Node.js/Express 또는 Spring Boot 연동 예정  
+- Spring Boot 연동
 - 이미지 생성: OpenAI DALL·E API  
 - 기타: 환경 변수로 API 키 관리, CORS 설정 등
 
