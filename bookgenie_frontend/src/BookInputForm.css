@@ -1,0 +1,93 @@
+    /* 전체 영역 */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px;
+    font-family: sans-serif;
+    background-color: #fff;
+}
+
+    /* 부모 입력 박스 설정 */
+.form-box {
+    border: 2px solid #30b3b3;
+    border-radius: 10px;
+    padding: 10px;
+    width: 400px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+   /* "도서 입력" 글자 */
+.form-title {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    color: #333;
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+   /* 각 입력 공간 설정  */
+.form-field {
+    margin-bottom: 20px;     /* 입력 칸 사이의 공백 설정 */
+    display: flex;
+    flex-direction: column;
+}
+
+   /* 입력 칸의 라벨 설정 */
+.form-field label {
+    margin-bottom: 5px;
+    margin-left: 19px;
+    font-size: 14px;
+}
+
+   /* 각 입력 필드의 크기 및 글꼴 등을 설정  */
+.form-field input,
+.form-field textarea {
+    padding: 10px;       /* 입력 칸의 너비 설정*/
+    border: 1.5px solid #ccc;
+    border-radius: 10px;
+    font-size: 12px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+   /* 버튼의 위치  */
+.button-wrapper {
+    text-align: center;
+}
+
+   /* 버튼 설정 */
+.button {
+    background-color: #30b3b3;
+    color: white;
+    border: none;
+    padding: 4px 30px;
+    border-radius: 20px;
+    font-size: 14px;
+    min-width: 100px;
+    cursor: pointer;
+    margin-bottom: 2px;
+}
+
+.button:hover {
+    background-color: #279a9a;
+}
+
+.confirm {
+    margin-top: 10px;
+}
+
+   /* 내용 입력 칸의 길이 자동조절 */
+.auto-resize-textarea {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    resize: none;       /* 수동 조절 막기 */
+    overflow: hidden;       /* 스크롤 바 제거 */
+    min-height: 60px;       /* 기본 높이 */
+}
