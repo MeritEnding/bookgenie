@@ -91,23 +91,27 @@ const Home = () => {
 
       {modal && (
         <div
-          style={{
-            position: "fixed",
-            top: 0, left: 0, right: 0, bottom: 0,
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-          }}
+          className="modal-overlay" // Add this class
+        // REMOVE THIS INLINE STYLE:
+        // style={{
+        //   position: "fixed",
+        //   top: 0, left: 0, right: 0, bottom: 0,
+        //   backgroundColor: "rgba(0, 0, 0, 0.5)",
+        //   display: "flex", alignItems: "center", justifyContent: "center",
+        // }}
         >
           <div
-            style={{
-              backgroundColor: "white",
-              padding: "2rem",
-              borderRadius: "8px",
-              textAlign: "center",
-            }}
+            className="modal-content" // Add this class
+          // REMOVE THIS INLINE STYLE:
+          // style={{
+          //   backgroundColor: "white",
+          //   padding: "2rem",
+          //   borderRadius: "8px",
+          //   textAlign: "center",
+          // }}
           >
             <p>정말 삭제하시겠습니까?</p>
-            <button onClick={handleDelete} style={{ marginRight: "1rem" }}>확인</button>
+            <button onClick={handleDelete} /* REMOVE THIS INLINE STYLE: style={{ marginRight: "1rem" }}*/>확인</button>
             <button onClick={() => openModal(false)}>취소</button>
           </div>
         </div>
