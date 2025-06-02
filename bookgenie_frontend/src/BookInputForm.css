@@ -1,93 +1,153 @@
-    /* 전체 영역 */
+/* 전체 영역 */
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 100px;
     font-family: sans-serif;
-    background-color: #fff;
+    background-color: #f8f9fa; /* Changed to a lighter background for modern feel */
+    min-height: 100vh; /* Ensures it takes up full viewport height */
 }
 
-    /* 부모 입력 박스 설정 */
+/* 부모 입력 박스 설정 */
 .form-box {
     border: 2px solid #30b3b3;
-    border-radius: 10px;
-    padding: 10px;
-    width: 400px;
+    border-radius: 12px; /* Slightly more rounded */
+    padding: 40px; /* Increased padding for more breathing room */
+    width: 100%; /* Make it responsive */
+    max-width: 450px; /* Set a max-width for better readability on large screens */
     position: relative;
     margin-bottom: 20px;
+    background-color: #fff; /* Ensure white background */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
 }
 
-   /* "도서 입력" 글자 */
+.form-box:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Slightly more prominent shadow on hover */
+}
+
+/* "도서 입력" 글자 */
 .form-title {
     position: absolute;
-    top: -14px;
+    top: -16px; /* Adjusted position to account for padding */
     left: 50%;
     transform: translateX(-50%);
     background-color: #fff;
     color: #333;
     font-weight: bold;
-    padding: 0 10px;
+    padding: 0 15px; /* Increased padding */
+    font-size: 20px; /* Slightly larger font */
+    z-index: 1; /* Ensure text is above border */
 }
 
-   /* 각 입력 공간 설정  */
+/* 각 입력 공간 설정 */
 .form-field {
-    margin-bottom: 20px;     /* 입력 칸 사이의 공백 설정 */
+    margin-bottom: 25px; /* Increased spacing between fields */
     display: flex;
     flex-direction: column;
 }
 
-   /* 입력 칸의 라벨 설정 */
+/* 입력 칸의 라벨 설정 */
 .form-field label {
-    margin-bottom: 5px;
-    margin-left: 19px;
-    font-size: 14px;
+    margin-bottom: 8px; /* More space between label and input */
+    margin-left: 0; /* Remove fixed left margin for better alignment */
+    font-size: 15px; /* Slightly larger label font */
+    color: #495057; /* Darker label color */
+    font-weight: 600; /* Bolder label */
 }
 
-   /* 각 입력 필드의 크기 및 글꼴 등을 설정  */
+/* 각 입력 필드의 크기 및 글꼴 등을 설정 */
 .form-field input,
 .form-field textarea {
-    padding: 10px;       /* 입력 칸의 너비 설정*/
-    border: 1.5px solid #ccc;
-    border-radius: 10px;
-    font-size: 12px;
-    margin-left: 15px;
-    margin-right: 15px;
+    padding: 12px 15px; /* Increased padding */
+    border: 1.5px solid #ced4da; /* Softer border color */
+    border-radius: 8px; /* Consistent border radius */
+    font-size: 15px; /* Larger font size for inputs */
+    margin-left: 0; /* Remove fixed left margin */
+    margin-right: 0; /* Remove fixed right margin */
+    width: 100%; /* Ensure inputs take full width */
+    outline: none; /* Remove default browser outline */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Smooth transition for focus */
+    color: #343a40; /* Input text color */
 }
 
-   /* 버튼의 위치  */
+.form-field input:focus,
+.form-field textarea:focus {
+    border-color: #30b3b3; /* Highlight border on focus */
+    box-shadow: 0 0 0 3px rgba(48, 179, 179, 0.25); /* Subtle glow effect on focus */
+}
+
+/* 버튼의 위치 */
 .button-wrapper {
     text-align: center;
+    margin-top: 30px; /* Add space above buttons */
 }
 
-   /* 버튼 설정 */
+/* 버튼 설정 */
 .button {
     background-color: #30b3b3;
     color: white;
     border: none;
-    padding: 4px 30px;
-    border-radius: 20px;
-    font-size: 14px;
-    min-width: 100px;
+    padding: 10px 30px; /* Adjusted padding */
+    border-radius: 25px; /* Slightly more rounded */
+    font-size: 16px; /* Larger font size */
+    min-width: 120px; /* Slightly wider minimum width */
     cursor: pointer;
-    margin-bottom: 2px;
+    margin: 0 10px; /* Space between buttons */
+    font-weight: 600; /* Bolder text */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for buttons */
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; /* Smooth transitions */
 }
 
 .button:hover {
     background-color: #279a9a;
+    transform: translateY(-2px); /* Lift effect on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
 }
 
-.confirm {
-    margin-top: 10px;
+.button.confirm {
+    background-color: #6c757d; /* A distinct color for confirm/cancel action */
 }
 
-   /* 내용 입력 칸의 길이 자동조절 */
+.button.confirm:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+/* 내용 입력 칸의 길이 자동조절 */
 .auto-resize-textarea {
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    resize: none;       /* 수동 조절 막기 */
-    overflow: hidden;       /* 스크롤 바 제거 */
-    min-height: 60px;       /* 기본 높이 */
+    resize: vertical; /* Allow vertical resizing, more common for text areas */
+    min-height: 80px; /* Slightly increased default height */
+    padding: 12px 15px; /* Consistent padding with inputs */
+    font-size: 15px; /* Consistent font size */
+    border: 1.5px solid #ced4da; /* Consistent border */
+    border-radius: 8px; /* Consistent border radius */
+    color: #343a40;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Smooth transition for focus */
+}
+
+.auto-resize-textarea:focus {
+    border-color: #30b3b3;
+    box-shadow: 0 0 0 3px rgba(48, 179, 179, 0.25);
+}
+
+/* Optional: Basic responsiveness */
+@media (max-width: 500px) {
+    .container {
+        padding: 30px 15px;
+    }
+    .form-box {
+        padding: 30px 20px;
+    }
+    .button {
+        width: 100%;
+        margin: 5px 0; /* Stack buttons on smaller screens */
+    }
+    .button-wrapper {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
